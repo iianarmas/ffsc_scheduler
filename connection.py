@@ -5,9 +5,9 @@ import random
 
 class Connection:
     db = mysql.connector.connect(
-        host='35.239.71.222',
-        user='iian-26',
-        passwd='Password26!',
+        host='11.111.11.111',
+        user='youcantseethis',
+        passwd='sorry',
         database='faith'
     )
 

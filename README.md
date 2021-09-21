@@ -15,6 +15,12 @@
 - Only the Pastor can set goals
 - Members can still view schedules
 
+### Future Plans
+- Add Music Team scheduling
+- Add feature to see church stats i.e. Church Attendance Stats (Overall and per Outreach), Faith Groups stats, etc. to help assess the health of the Church and groups
+- Add a feature to easily handle faith groups
+- Add Messaging capability
+
 #### Screenshots
 
 <a href="url"><img src="https://github.com/iianarmas/ffsc_scheduler/blob/main/mockups/tia393612602921175319.png" align="left" height="450" width="230" ></a>
@@ -28,9 +34,3 @@
 <a href="url"><img src="https://github.com/iianarmas/ffsc_scheduler/blob/main/mockups/tia6100228928230783366.png" align="left" height="450" width="230" ></a>
 <a href="url"><img src="https://github.com/iianarmas/ffsc_scheduler/blob/main/mockups/tia1262707180858253240.png" align="left" height="450" width="230" ></a>
 <a href="url"><img src="https://github.com/iianarmas/ffsc_scheduler/blob/main/mockups/tia8932647450733434132.png" align="left" height="450" width="230" ></a>
-
-### Future Plans
-- Add Music Team scheduling
-- Add feature to see church stats i.e. Church Attendance Stats (Overall and per Outreach), Faith Groups stats, etc. to help assess the health of the Church and groups
-- Add a feature to easily handle faith groups
-- Add Messaging capability

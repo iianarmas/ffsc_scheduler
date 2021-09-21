@@ -1,0 +1,633 @@
+##:import Clock kivy.clock.Clock
+
+# COLORS: 
+##:set off_white 249/255, 250/255, 251/255, 1
+#:set off_white 1,1,1,1
+#:set purple 93/255, 21/255, 254/255, 1
+#:set yellow 254/255,215/255, 46/255,1
+#:set yellow_text 176/255, 99/255, 1/255, 1
+#:set light_blue 21/255, 182/255, 254/255, 1
+#:set subtext_color 78/255, 78/255, 78/255, 1
+#:set black 25/255, 25/255, 25/255, 0.9
+#:set black_secondary 50/255, 50/255, 50/255, 0.8
+
+
+<PreSplashScreen>:
+    id: pre_splash
+    md_bg_color: 1,1,1,1
+    MDFloatLayout:
+        Image:
+            source: 'images/bg.png'
+            size_hint: 0.9, 0.34
+            pos_hint: {'x':0, 'top':1.03}
+            allow_stretch: True
+            keep_ratio: False
+
+        MDRelativeLayout:
+            pos_hint: {'x':0.04, 'top':0.93}
+            MDLabel:
+                text: 'Account'
+                font_name: 'fonts/Poppins-SemiBold.ttf'
+                font_size: '56sp'
+                text_size: self.size
+                theme_text_color: 'Custom'
+                text_color: 1,1,1,1
+                valign: 'top'
+                halign: 'left'
+
+        MDRelativeLayout:
+            pos_hint: {'x':0.04, 'top':0.96}
+            MDLabel:
+                text: 'Create Your'
+                font_name: 'fonts/Poppins-Regular.ttf'
+                font_size: '26sp'
+                text_size: self.size
+                theme_text_color: 'Custom'
+                text_color: 1,1,1,1
+                valign: 'top'
+                halign: 'left'
+
+            
+        MDRelativeLayout:
+            size_hint: 0.80, 0.07
+            pos_hint: {'center_x':0.5, 'center_y':0.64}
+            MDLabel:
+                text: 'Only registered email will be accepted.'
+                font_name: 'fonts/Poppins-Regular.ttf'
+                font_size: '16sp'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'left'
+                theme_text_color: 'Custom'
+                text_color: 78/255, 78/255, 78/255, 1
+            
+        
+        MyTextField:
+            hint_text: 'Email'
+            pos_hint: {'center_x':0.5, 'center_y':0.54}
+            icon_left: 'email'
+            write_tab: False
+
+
+        MyTextField:
+            id: password_field
+            hint_text: 'Create Password'
+            pos_hint: {'center_x':0.5, 'center_y':0.44}
+            password: True
+            icon_left: 'key-variant'
+            write_tab: False
+
+
+        MyTextField:
+            id: verify_password_field
+            hint_text: 'Verify Password'
+            pos_hint: {'center_x':0.5, 'center_y':0.34}
+            password: True
+            icon_left: 'key-variant'
+            write_tab: False
+
+        MDIconButton:
+            icon: 'eye-off'
+            pos_hint: {'center_x':0.82, 'center_y':0.34}
+            theme_text_color: 'Custom'
+            text_color: 78/255, 78/255, 78/255, 0.5
+            on_release:
+                self.icon = 'eye' if self.icon == 'eye-off' else 'eye-off'
+                password_field.password = False if password_field.password is True else True
+                verify_password_field.password = False if verify_password_field.password is True else True
+        
+        MDCard:
+            size_hint: 0.4, 0.07
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            md_bg_color: 93/255, 21/255, 254/255, 1
+            radius: [dp(30)]
+            on_release: root.create()
+            
+
+            MDLabel:
+                text: 'Create'
+                font_style: 'Button'
+                halign: 'center'
+                theme_text_color: 'Custom'
+                text_color: 1,1,1,1
+                
+
+<MyTextField@MDTextFieldRound>:
+    normal_color: 1,1,1,1
+    color_active: 1,1,1,1
+    size_hint: 0.7, 0.064
+    normal_color: 1,1,1,1
+    color_active: 1,1,1,1
+    size_hint: 0.7, 0.064
+        
+    MDLabel:
+        text: 'Wait'
+        halign: 'center'
+
+<LoginScreen>:
+    id: login_screen
+    md_bg_color: 1,1,1,1
+    MDFloatLayout:
+        Image:
+            source: 'images/ffsc_logo.png'
+            size_hint: 0.28, 0.28
+            pos_hint: {'center_x':0.5, 'center_y':0.79}
+
+        MDRelativeLayout:
+            pos_hint: {'center_x':0.5, 'center_y':0.56}
+            MDLabel:
+                text: 'Log In'
+                font_name: 'fonts/Poppins-Bold.ttf'
+                font_size: '36sp'
+                text_size: self.size
+                theme_text_color: 'Custom'
+                text_color: black
+                valign: 'middle'
+                halign: 'center'
+        MDRelativeLayout:
+            size_hint: 0.80, 0.07
+            pos_hint: {'center_x':0.5, 'center_y':0.5}
+            MDLabel:
+                text: 'Please do not share your credentials to anyone.'
+                font_name: 'fonts/Poppins-Regular.ttf'
+                font_size: '12sp'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+                theme_text_color: 'Custom'
+                text_color: subtext_color
+            
+        
+        MDTextFieldRound:
+            hint_text: 'Email'
+            pos_hint: {'center_x':0.5, 'center_y':0.42}
+            icon_left: 'email'
+            write_tab: False
+            normal_color: 1,1,1,1
+            color_active: 1,1,1,1
+            size_hint: 0.7, 0.064
+
+        MDTextFieldRound:
+            id: password_field
+            hint_text: 'Password'
+            pos_hint: {'center_x':0.5, 'center_y':0.33}
+            password: True
+            write_tab: False
+            icon_left: 'key-variant'
+            normal_color: 1,1,1,1
+            color_active: 1,1,1,1
+            size_hint: 0.7, 0.064
+
+        MDIconButton:
+            icon: 'eye-off'
+            pos_hint: {'center_x':0.82, 'center_y':0.33}
+            theme_text_color: 'Custom'
+            text_color: 78/255, 78/255, 78/255, 0.5
+            on_release:
+                self.icon = 'eye' if self.icon == 'eye-off' else 'eye-off'
+                password_field.password = False if password_field.password is True else True
+        
+        MDRelativeLayout:
+            pos_hint: {'center_x':0.2, 'center_y':0.27}
+            size_hint: 0.05, 0.05
+            MDCheckbox:
+                #pos_hint: {'center_x':0.2, 'center_y':0.27}
+                size: '20dp', '20dp'
+                selected_color: yellow
+                active: True
+                ripple_scale: 0
+                #on_active: ''
+
+
+        MDRelativeLayout:
+            pos_hint: {'center_x': 0.33, 'center_y': 0.27}          
+            MDLabel:
+                text: 'Remember me'
+                halign: 'center'
+                font_name: 'fonts/Poppins-Regular.ttf'
+                font_size: '12sp'
+                theme_text_color: 'Custom'
+                text_color: subtext_color
+
+        MDCard:
+            size_hint: 0.80, 0.07
+            pos_hint: {'center_x': 0.5, 'center_y': 0.18}
+            md_bg_color: purple
+            radius: [dp(30),]
+            on_release: root.on_enter_button()
+
+            MDLabel:
+                text: 'Login'
+                font_style: 'Button'
+                halign: 'center'
+                theme_text_color: 'Custom'
+                text_color: 1,1,1,1
+
+        MDIconButton:
+            icon: "facebook"
+            pos_hint: {"center_x": 0.5, "center_y": 0.08}
+            theme_text_color: 'Custom'
+            text_color: light_blue
+
+        MDBoxLayout:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.04}          
+            MDLabel:
+                text: 'Check our page for latest updates.'
+                halign: 'center'
+                font_name: 'fonts/Poppins-Regular.ttf'
+                font_size: '12sp'
+                theme_text_color: 'Custom'
+                text_color: subtext_color
+            
+    
+            
+
+<HomeScreen>:
+    id: home_screen
+    on_pre_leave: app.on_outreach_dialog_close()
+    
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDToolbar:
+            id: home_toolbar
+            title: 'Scheduler'
+            text: ''
+            md_bg_color: purple
+            right_action_items: [['plus-circle-outline', lambda x: root.create_new(x)]]
+            elevation: 10
+
+
+        MDScrollViewRefreshLayout:
+            refresh_callback: ''#app.refresh_callback
+            root_layout: root
+            color: yellow
+            MDBoxLayout:
+                orientation:'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                md_bg_color: off_white
+                
+ 
+                # Welcome Panel
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDGridLayout:
+                        cols: 2
+                        rows: 2
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: '36dp'
+                        padding: ('24dp','36dp','24dp','24dp')
+                        MDLabel:
+                            text: '[b]Welcome Iian![/b]'
+                            markup: True
+                            font_style: 'H4'
+                            size_hint_x: 2.5
+                        MDLabel:
+                            text: '[b]ADMIN[/b]'
+                            markup: True
+                            font_style: 'H5'
+                            halign: 'right'
+                            theme_text_color: 'Custom'
+                            text_color: purple
+                        MDRelativeLayout:
+                            pos_hint: {'x': 1, 'top': 1}
+                            MDLabel:
+                                text: 'Ministry Worker'
+                                font_size: '18sp'
+                                valign: 'top'
+
+                # Goals Panel
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: root.height * 0.18
+                    padding: ('0dp', '12dp', '0dp', '0dp')
+                    canvas.before:
+                        Color:
+                            rgba: yellow
+                        RoundedRectangle:
+                            size: self.width, self.height * 0.85
+                            pos: 54, self.y
+                            radius: [56,]
+                        Color:
+                            #rgba: 1,1,0,1
+                        Rectangle:
+                            size: self.height * 1.3, self.height * 1.05
+                            pos: root.width / 1.6, self.y
+                            source: 'images/notebook-crop.png'
+                    MDBoxLayout:
+                        size_hint_x: 0.35
+                    MDBoxLayout:
+                        size_hint_x: 0.55
+                        MDIconButton:
+                            icon: 'chevron-right-circle'
+                            theme_text_color: 'Custom'
+                            text_color: black
+                            pos_hint: {'center_x':0.5, 'center_y':0.5}
+                            on_release: root.on_goal_press()
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: ('4dp', '12dp', '24dp', '12dp')
+                        spacing: '4dp'
+                        size_hint_x: 3
+
+                        MDLabel:
+                            text: "[b]OUR GOAL THIS MONTH[/b]"
+                            markup: True
+                            theme_text_color: 'Custom'
+                            text_color: yellow_text
+                            text_size: self.size
+                            font_size: '16sp'
+                            valign: 'bottom'
+
+                        MDLabel:
+                            text: root.goal_body
+                            size_hint_x: None
+                            width: root.width
+                            text_size: self.size
+                            theme_text_color: 'Custom'
+                            text_color: yellow_text
+                            font_size: '14sp'
+                            valign: 'top'
+                            shorten: True
+                            shorten_from: 'right'
+                            ellipsis_options: {'color': yellow_text}
+                            
+                    MDBoxLayout:
+                        size_hint_x: 1.5
+                
+                # Schedule Label
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: ('24dp', '36dp', '24dp', '12dp')
+                    MDLabel:
+                        text: '[b]Latest Schedules[/b]'
+                        markup: True
+                        font_style: 'H5'
+                    MDLabel:
+                        text: root.schedule_label
+                        font_style: 'Subtitle2'
+                        halign: 'right'
+                        theme_text_color: 'Custom'
+                        text_color: light_blue
+
+                # Schedule Panel
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    padding: ('24dp', '12dp', '24dp', '16dp')
+                    spacing: '8dp'
+                    size_hint_y: None
+                    height: root.height * 0.48
+                    MainScheduleCard:
+                    OutreachScheduleCard:
+                    EventScheduleCard:
+                        
+                # Announcement Label
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: ('24dp', '36dp', '24dp', '12dp')
+                    MDLabel:
+                        text: '[b]Announcements[/b]'
+                        markup: True
+                        font_style: 'H5'
+                    
+                    MDLabel:
+                        text: root.announcement_date
+                        font_style: 'Subtitle2'
+                        theme_text_color: 'Custom'
+                        text_color: light_blue
+                        halign: 'right'
+
+                
+                # Announcements Panel
+                MDBoxLayout:
+                    padding: ('24dp', '12dp', '24dp', '16dp')
+                    
+                    size_hint_y: None
+                    height: root.height * 0.3
+                    MDCard:
+                        orientation: 'vertical'
+                        md_bg_color: purple
+                        spacing: '12dp'
+                        radius: [56,]
+                        on_release: root.on_announcement_press()
+
+                        MDLabel:
+                            text: '[b]' + root.announcement_title +'[/b]'
+                            markup: True
+                            font_style: 'H4'
+                            halign: 'center'
+                            theme_text_color: 'Custom'
+                            text_color: 1,1,1,1
+                            text_size: self.size
+                        MDLabel:
+                            text: root.announcement_body
+                            halign: 'center'
+                            valign: 'top'
+                            max_lines: 3
+                            theme_text_color: 'Custom'
+                            text_color: 1,1,1,1
+                            text_size: self.size
+
+                # Memory Verse Label
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: ('24dp', '36dp', '24dp', '12dp')
+                    MDLabel:
+                        text: '[b]Memory Verse[/b]'
+                        markup: True
+                        font_style: 'H5'
+
+
+                # Memory Verse Panel
+                MDBoxLayout:
+                    padding: ('24dp', '16dp', '24dp', '8dp')
+                    size_hint_y: None
+                    height: root.height * 0.3
+                    MDCard:
+                        radius: [56,]
+                        on_release: root.on_memory_verse_press()
+                        MDBoxLayout:
+                            MDBoxLayout:
+                                padding: '24dp'
+                                Image:
+                                    source: 'images/bible.png'
+
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                size_hint_x: 1.5
+                                padding: ('24dp','24dp','24dp','8dp')
+                                
+                                MDLabel:
+                                    text:'[i][b]' + root.verse_title + '[/b]\n \n' + root.verse_body + '[/i]'
+                                    font_size: '16sp'
+                                    halign: 'center'
+                                    markup: True
+                                    max_lines: 8
+                                    
+
+<MainScheduleCard@MDCard>:
+    size_hint_y: 0.3
+    elevation: 8
+    on_release: app.on_main_card_press()
+    canvas.after:
+        Color:
+            rgba: light_blue
+        Rectangle:
+            size: dp(8), self.height
+            pos: self.width + dp(15), self.y
+
+    FitImage:
+        size_hint_x: 0.5
+        source: 'images/ffsc_cover.jpg'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: ('24dp', '8dp', '24dp', '8dp')
+        MDLabel:
+            text: '[b]MAIN[/b]'
+            font_size: '24sp'
+            valign: 'bottom'
+            text_size: self.size
+            markup: True
+        MDLabel:
+            text: '"Short topic titles here. Like faith, hope, and love"'
+            valign: 'middle'
+            text_size: self.size
+            font_size: '16sp'
+            theme_text_color: 'Custom'
+            text_color: subtext_color
+            size_hint_y: 2
+
+
+<OutreachScheduleCard@MDCard>:
+    id: outreach_card
+    size_hint_y: 0.3
+    elevation: 8
+    #on_release: app.on_select_outreach(self)
+    on_press: app.on_outreach_card_press()
+
+    canvas.after:
+        Color:
+            rgba: purple
+        Rectangle:
+            size: dp(8), self.height
+            pos: self.width + dp(15), self.y
+    FitImage:
+        size_hint_x: 0.5
+        source: 'images/cobol_cover.jpeg'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: ('24dp', '8dp', '24dp', '8dp')
+        MDLabel:
+            text: '[b]OUTREACHES[/b]'
+            font_size: '24sp'
+            valign: 'bottom'
+            text_size: self.size
+            markup: True
+        MDLabel:
+            text: 'Outreach services are currently available in Cobol and Malacañang.'
+            valign: 'middle'
+            text_size: self.size
+            font_size: '16sp'
+            theme_text_color: 'Custom'
+            text_color: subtext_color
+
+            size_hint_y: 2
+        
+
+<EventScheduleCard@MDCard>:
+    size_hint_y: 0.3
+    elevation: 8
+    on_release: app.on_event_card_press()
+    canvas.after: 
+        Color:
+            rgba: yellow
+        Rectangle:
+            size: dp(8), self.height
+            pos: self.width + dp(15), self.y
+    FitImage:
+        size_hint_x: 0.5
+        source: 'images/events_cover.jpg'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: ('24dp', '8dp', '24dp', '8dp')
+        MDLabel:
+            text: '[b]EVENTS[/b]'
+            font_size: '24sp'
+            valign: 'bottom'
+            text_size: self.size
+            markup: True
+        MDLabel:
+            text: "Click here to see all our church's events and activities this month."
+            valign: 'middle'
+            text_size: self.size
+            font_size: '16sp'
+            theme_text_color: 'Custom'
+            text_color: subtext_color
+            size_hint_y: 2
+
+
+<OutreachDialogContent>:
+    orientation: 'vertical'
+    spacing: "12dp"
+    size_hint_y: None
+    height: '140dp'
+    max_height: '240dp'
+    padding: ('24dp','0dp','24dp','12dp')
+    ScrollView:
+        MDList:
+            id: container_list
+
+<GoalContent>:
+    size_hint_y: None
+    height: '140dp'
+    ScrollView:
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            padding: '12dp'
+            spacing: '12dp'
+            height: self.minimum_height
+            MDTextField:
+                id: goal_title
+                hint_text: 'Title'
+                write_tab: False
+                on_text: root.goal_text()
+            
+            MDTextField:
+                id: goal_body
+                hint_text: 'Body'
+                multiline: True
+                write_tab: False
+                on_text: root.goal_body_text()
+
+
+<AnnouncementContent>:
+    size_hint_y: None
+    height: '140dp'
+    ScrollView:
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            padding: '12dp'
+            spacing: '12dp'
+            height: self.minimum_height
+
+            MDTextField:
+                id: announcement_title
+                hint_text: 'Title'
+                write_tab: False
+                on_text: root.announcement_text()
+            
+            MDTextField:
+                id: announcement_body
+                hint_text: 'Body'
+                multiline: True
+                write_tab: False
+                on_text: root.announcement_body()

@@ -1,0 +1,307 @@
+#:set purple 93/255, 21/255, 254/255, 1
+
+<ScheduleViewCard>:
+    id: schedule_cards
+    orientation: 'vertical'
+    padding: '12dp'
+    spacing: '24dp'
+    size_hint: 1, None
+    height: dp(500)
+    max_height: dp(600)
+
+    MDBoxLayout:
+        id: event_container
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
+        padding: '24dp'
+        MDLabel:
+            id: preacher_name
+            text: root.preacher_name
+            font_style: 'H4'
+        MDBoxLayout:
+            id: event
+            size_hint_y: None
+            height: self.minimum_height
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: date
+                text: '[b]Date:  [/b]' + root.date
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: time
+                text: '[b]Time:  [/b]' + root.time
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: topic
+                text: '[b]Topic:  [/b]' + root.topic
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: topic_details
+                text: '[b]Topic Details:  [/b]' + root.topic_details
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: substitute_preacher
+                text: '[b]Substitute Preacher:  [/b]' + root.substitute_preacher
+                markup: True
+
+        MDSeparator:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint_x: 0.8
+        MDBoxLayout:
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: opening_prayer
+                text: '[b]Opening Prayer:  [/b]' + root.opening_prayer
+                markup: True
+
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: scripture_reading
+                text: '[b]Scripture Reading:  [/b]' + root.scripture_reading
+                markup: True
+
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: offertory
+                text: '[b]Offertory:  [/b]' + root.offertory
+                markup: True
+
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: closing_prayer
+                text: '[b]Closing Prayer:  [/b]' + root.closing_prayer
+                markup: True
+
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                text: '[b]Event Details:  [/b]' + root.event_details
+                markup: True
+
+
+<EventScheduleViewCard>:
+    id: schedule_cards
+    orientation: 'vertical'
+    padding: '12dp'
+    spacing: '24dp'
+    size_hint: 1, None
+    height: dp(612)
+    max_height: dp(712)
+
+    MDBoxLayout:
+        id: event_container
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
+        padding: '24dp'
+        MDLabel:
+            id: event
+            text: root.event
+            font_style: 'H4'
+        MDBoxLayout:
+            id: event
+            size_hint_y: None
+            height: self.minimum_height
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: preacher_name
+                text: '[b]Preacher:  [/b]' + root.preacher_name
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: date
+                text: '[b]Date:  [/b]' + root.date
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: time
+                text: '[b]Time:  [/b]' + root.time
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: topic
+                text: '[b]Topic:  [/b]' + root.topic
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: topic_details
+                text: '[b]Topic Details:  [/b]' + root.topic_details
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: substitute_preacher
+                text: '[b]Substitute Preacher:  [/b]' + root.substitute_preacher
+                markup: True
+
+        MDSeparator:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint_x: 0.8
+        MDBoxLayout:
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: opening_prayer
+                text: '[b]Opening Prayer:  [/b]' + root.opening_prayer
+                markup: True
+
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: scripture_reading
+                text: '[b]Scripture Reading:  [/b]' + root.scripture_reading
+                markup: True
+
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: offertory
+                text: '[b]Offertory:  [/b]' + root.offertory
+                markup: True
+
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: closing_prayer
+                text: '[b]Closing Prayer:  [/b]' + root.closing_prayer
+                markup: True
+
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                text: '[b]Event Details:  [/b]' + root.event_details
+                markup: True
+        MDSeparator:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint_x: 0.8
+        MDBoxLayout:
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: opening_prayer
+                text: '[b]For more info please contact:  [/b]' + root.event_organizer
+                markup: True
+        MDBoxLayout:
+            padding: '40dp'
+            MDLabel:
+                id: opening_prayer
+                text: '[b]Cotact details :  [/b]' + root.event_contact
+                markup: True
+
+
+<MainContent>:
+    name: 'maincontentscreen'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            id: home_toolbar
+            title: root.title
+            left_action_items: [['arrow-left', lambda x: app.home_screen()]]
+            #right_action_items: [['dots-vertical', lambda x: app.create_new(x)]]
+            pos_hint: {'x': 0,'top':1}
+            md_bg_color: purple
+
+        MDRelativeLayout:
+            ScrollView:
+                padding: "24dp"
+                MDStackLayout:
+                    id: schedules
+                    orientation: 'lr-tb'
+                    spacing: '24dp'
+                    padding: '32dp'
+                    size_hint_x: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+<OutreachContent>:
+    name: 'outreachcontentscreen'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            id: home_toolbar
+            title: root.title
+            left_action_items: [['arrow-left', lambda x: app.home_screen()]]
+            #right_action_items: [['dots-vertical', lambda x: app.create_new(x)]]
+            pos_hint: {'x': 0,'top':1}
+            md_bg_color: purple
+        MDRelativeLayout:
+            ScrollView:
+                padding: "24dp"
+                MDStackLayout:
+                    id: schedules
+                    orientation: 'lr-tb'
+                    spacing: '24dp'
+                    padding: '32dp'
+                    size_hint_x: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+
+<EventContent>:
+    name: 'eventcontentscreen'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            id: home_toolbar
+            title: root.title
+            left_action_items: [['arrow-left', lambda x: app.home_screen()]]
+            #right_action_items: [['dots-vertical', lambda x: app.create_new(x)]]
+            pos_hint: {'x': 0,'top':1}
+            md_bg_color: purple
+        MDRelativeLayout:
+            ScrollView:
+                padding: "24dp"
+                MDStackLayout:
+                    id: schedules
+                    orientation: 'lr-tb'
+                    spacing: '24dp'
+                    padding: '32dp'
+                    size_hint_x: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+
+<MySpinner>:
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "60dp"
+    padding: '24dp'
+    MDSpinner:
+        id: spin
+        size_hint: None, None
+        size: dp(46), dp(46)
+        color: yellow
+        pos_hint: {'center_x': 0.5, 'top': 1}
+        active: True
+        
+

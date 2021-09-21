@@ -1,0 +1,668 @@
+#:set purple 93/255, 21/255, 254/255, 1
+#:set yellow 254/255,215/255, 46/255,1
+
+
+<MainServiceCreate>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            id: create_new_toolbar
+            title: 'Create New Main Service'
+            left_action_items: [['arrow-left', lambda x: app.home_screen()]]
+            right_action_items: [['send', lambda x: root.on_send_button_press(x)]]
+            elevation: 10
+            md_bg_color: purple
+
+        MDRelativeLayout:
+            ScrollView:
+                id: scroll
+                MDStackLayout:
+                    id: create
+                    orientation: 'lr-tb'
+                    spacing: '24dp'
+                    padding: '24dp'
+                    size_hint_x: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDFloatingActionButton:
+                icon: 'plus'
+                pos_hint: {'right': 0.98, 'y': 0.02}
+                md_bg_color: yellow
+                theme_text_color: 'Custom'
+                elevation: 8
+                on_release: root.on_add_button_press()
+
+<MainServiceCreateCard>:
+    orientation: 'vertical'
+    size_hint: 1, None
+    height: self.minimum_height
+    spacing: '20dp'
+
+    MDRelativeLayout:
+        padding: '24dp'
+        MDLabel:
+            text: root.schedule_num_text
+            font_style: 'H4'
+        MDRaisedButton:
+            id: save_button
+            text: 'Save'
+            font_style: 'Button'
+            pos_hint: {'right': 1, 'center_y': 0.5}
+            md_bg_color: purple
+            on_release: root.on_schedule_save()
+            disabled: True
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: ('0dp','12dp','0dp','12dp')
+        size_hint: 1, None
+        height: self.minimum_height
+        spacing: '20dp'
+
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: months
+                hint_text: 'Month'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+
+            
+            MDDropDownItem:
+                id: months_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.months_menu.open()
+        
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: preachers
+                hint_text: 'Preacher Name'
+                mode: 'fill'
+                write_tab: False
+                on_text: root.on_check_text(self)
+                
+            MDDropDownItem:
+                id: preachers_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.preachers_menu.open()
+
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            MDTextField:
+                id: date_text_field
+                hint_text: 'Date'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+
+
+            MDIconButton:
+                id: date_text_button
+                icon: 'arrow-down-drop-circle'
+                font_style: 'Button'
+                on_release: root.on_date_picker()
+
+            MDTextField:
+                id: time_text_field
+                hint_text: 'Time'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+    
+
+            MDIconButton:
+                id: time_text_button
+                icon: 'arrow-down-drop-circle'
+                font_style: 'Button'
+                on_release: root.show_time_picker()
+        MDTextField:
+            id: topic
+            hint_text: 'Topic'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: topic_details
+            hint_text: 'Topic Details'
+            mode: 'fill'
+            multiline: True
+            write_tab: False
+
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: sub_preachers
+                hint_text: 'Substitute'
+                mode: 'fill'
+                write_tab: False
+                on_text: root.on_check_text(self)
+
+
+            MDDropDownItem:
+                id: sub_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.sub_preachers_menu.open()
+
+        MDTextField:
+            id: opening_prayer
+            hint_text: 'Opening Prayer'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: scripture_reading
+            hint_text: 'Scripture Reading'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: offertory
+            hint_text: 'Offertory'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: closing_prayer
+            hint_text: 'Closing Prayer'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: event
+            hint_text: 'Event'
+            helper_text: 'Leave blank for no event'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+        MDTextField:
+            id: event_details
+            hint_text: 'Event Details'
+            helper_text: 'Leave blank for no event'
+            mode: 'fill'
+            multiline: True
+            write_tab: False
+            on_text: root.on_check_text(self)
+            
+        MDSeparator:
+            height: '1dp'
+            size_hint_x: 0.6
+            pos_hint: {'center_x':0.5, 'y': 0}
+
+
+
+<OutreachServiceCreate>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            id: create_new_toolbar
+            title: 'Create New Outreach Service'
+            left_action_items: [['arrow-left', lambda x: app.home_screen()]]
+            right_action_items: [['send', lambda x: root.on_send_button_press(x)]]
+            md_bg_color: purple
+            elevation: 10
+            
+
+        MDRelativeLayout:
+            ScrollView:
+                id: scroll
+                MDStackLayout:
+                    id: create
+                    orientation: 'lr-tb'
+                    spacing: '24dp'
+                    padding: '24dp'
+                    size_hint_x: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDFloatingActionButton:
+                icon: 'plus'
+                pos_hint: {'right': 0.98, 'y': 0.02}
+                theme_text_color: 'Custom'
+                icon_color: 1,1,1,1
+                md_bg_color: yellow
+                elevation: 8
+                on_release: root.on_add_button_press()
+
+<OutreachServiceCreateCard>:
+    orientation: 'vertical'
+    size_hint: 1, None
+    height: self.minimum_height
+    spacing: '20dp'
+
+    MDRelativeLayout:
+        padding: '24dp'
+        MDLabel:
+            text: root.schedule_num_text
+            font_style: 'H4'
+        MDRaisedButton:
+            id: save_button
+            text: 'Save'
+            font_style: 'Button'
+            pos_hint: {'right': 1, 'center_y': 0.5}
+            md_bg_color: purple
+            on_release: root.on_schedule_save()
+            disabled: True
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: ('0dp','12dp','0dp','12dp')
+        size_hint: 1, None
+        height: self.minimum_height
+        spacing: '20dp'
+
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: months
+                hint_text: 'Month'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+
+            MDDropDownItem:
+                id: months_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.months_menu.open()
+
+        MDTextField:
+            id: outreach_name
+            hint_text: 'Outreach Brgy. Name'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: preachers
+                hint_text: 'Preacher Name'
+                mode: 'fill'
+                write_tab: False
+                on_text: root.on_check_text(self)
+                
+            MDDropDownItem:
+                id: preachers_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.preachers_menu.open()
+
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            MDTextField:
+                id: date_text_field
+                hint_text: 'Date'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+
+
+            MDIconButton:
+                id: date_text_button
+                icon: 'arrow-down-drop-circle'
+                font_style: 'Button'
+                on_release: root.on_date_picker()
+
+            MDTextField:
+                id: time_text_field
+                hint_text: 'Time'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+    
+
+            MDIconButton:
+                id: time_text_button
+                icon: 'arrow-down-drop-circle'
+                font_style: 'Button'
+                on_release: root.show_time_picker()
+        MDTextField:
+            id: topic
+            hint_text: 'Topic'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: topic_details
+            hint_text: 'Topic Details'
+            mode: 'fill'
+            multiline: True
+            write_tab: False
+
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: sub_preachers
+                hint_text: 'Substitute'
+                mode: 'fill'
+                write_tab: False
+                on_text: root.on_check_text(self)
+
+
+            MDDropDownItem:
+                id: sub_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.sub_preachers_menu.open()
+
+        MDTextField:
+            id: opening_prayer
+            hint_text: 'Opening Prayer'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: scripture_reading
+            hint_text: 'Scripture Reading'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: offertory
+            hint_text: 'Offertory'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: closing_prayer
+            hint_text: 'Closing Prayer'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+        MDTextField:
+            id: event
+            hint_text: 'Event'
+            helper_text: 'Leave blank for no event'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+        MDTextField:
+            id: event_details
+            hint_text: 'Event Details'
+            helper_text: 'Leave blank for no event'
+            mode: 'fill'
+            multiline: True
+            write_tab: False
+            on_text: root.on_check_text(self)
+            
+        MDSeparator:
+            height: '1dp'
+            size_hint_x: 0.6
+            pos_hint: {'center_x':0.5, 'y': 0}
+
+
+<EventServiceCreate>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            id: create_new_toolbar
+            title: 'Create New Event'
+            left_action_items: [['arrow-left', lambda x: app.home_screen()]]
+            right_action_items: [['send', lambda x: root.on_send_button_press(x)]]
+            elevation: 10
+            md_bg_color: purple
+
+        MDRelativeLayout:
+            ScrollView:
+                id: scroll
+                MDStackLayout:
+                    id: create
+                    orientation: 'lr-tb'
+                    spacing: '24dp'
+                    padding: '24dp'
+                    size_hint_x: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDFloatingActionButton:
+                icon: 'plus'
+                pos_hint: {'right': 0.98, 'y': 0.02}
+                md_bg_color: yellow
+                elevation: 8
+                on_release: root.on_add_button_press()
+
+<EventServiceCreateCard>:
+    orientation: 'vertical'
+    size_hint: 1, None
+    height: self.minimum_height
+    spacing: '20dp'
+
+    MDRelativeLayout:
+        padding: '24dp'
+        MDLabel:
+            text: root.schedule_num_text
+            font_style: 'H4'
+        MDRaisedButton:
+            id: save_button
+            text: 'Save'
+            font_style: 'Button'
+            pos_hint: {'right': 1, 'center_y': 0.5}
+            md_bg_color: purple
+            on_release: root.on_schedule_save()
+            disabled: True
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: ('0dp','12dp','0dp','12dp')
+        size_hint: 1, None
+        height: self.minimum_height
+        spacing: '20dp'
+
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: months
+                hint_text: 'Month'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+
+            MDDropDownItem:
+                id: months_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.months_menu.open()
+
+        MDTextField:
+            id: event
+            hint_text: 'Event Name'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)           
+
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: preachers
+                hint_text: 'Preacher Name'
+                mode: 'fill'
+                write_tab: False
+                on_text: root.on_check_text(self)
+                
+            MDDropDownItem:
+                id: preachers_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.preachers_menu.open()
+
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            MDTextField:
+                id: date_text_field
+                hint_text: 'Date'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+
+
+            MDIconButton:
+                id: date_text_button
+                icon: 'arrow-down-drop-circle'
+                font_style: 'Button'
+                on_release: root.on_date_picker()
+
+            MDTextField:
+                id: time_text_field
+                hint_text: 'Time'
+                mode: 'fill'
+                write_tab: False
+                disabled: True
+                on_text: root.on_check_text(self)
+    
+
+            MDIconButton:
+                id: time_text_button
+                icon: 'arrow-down-drop-circle'
+                font_style: 'Button'
+                on_release: root.show_time_picker()
+        MDTextField:
+            id: topic
+            hint_text: 'Topic'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: topic_details
+            hint_text: 'Topic Details'
+            mode: 'fill'
+            multiline: True
+            write_tab: False
+
+        MDBoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: '20dp'
+            MDTextField:
+                id: sub_preachers
+                hint_text: 'Substitute'
+                mode: 'fill'
+                write_tab: False
+                on_text: root.on_check_text(self)
+
+
+            MDDropDownItem:
+                id: sub_drop_down
+                active_line: False
+                pos_hint: {'center_x':0.5,'center_y':0.5}
+                on_release: root.sub_preachers_menu.open()
+
+        MDTextField:
+            id: opening_prayer
+            hint_text: 'Opening Prayer'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: scripture_reading
+            hint_text: 'Scripture Reading'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: offertory
+            hint_text: 'Offertory'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: closing_prayer
+            hint_text: 'Closing Prayer'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+
+        MDTextField:
+            id: event_details
+            hint_text: 'Event Details'
+            helper_text: 'Leave blank for no event'
+            mode: 'fill'
+            multiline: True
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+        MDTextField:
+            id: event_organizer
+            hint_text: 'Event Organizer'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+
+        MDTextField:
+            id: event_contact
+            hint_text: 'Organizer Contact Details'
+            mode: 'fill'
+            write_tab: False
+            on_text: root.on_check_text(self)
+            
+        MDSeparator:
+            height: '1dp'
+            size_hint_x: 0.6
+            pos_hint: {'center_x':0.5, 'y': 0}
